@@ -1,0 +1,147 @@
+<html lang="en-US" "xml:lang"="en-US" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta content= "width=device-width initial-scale=1" name= "viewport"/>
+    <meta http-equiv= "x-ua-compatible" content= "ie=edge"/>
+    <title>Personal Finances page</title>
+
+    <style>
+      html {
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+        background-color: white;
+        text-rendering: optimizeLegibility;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+        font-weight: 300;
+        font-size: 16px;
+        color: white;
+        margin: 0;
+        padding: 20px 40px;
+        color: rgb(55, 53, 47);
+      }
+      h1{
+      font-weight: 700;
+      line-height: 1.2;
+      font-size: 40px;
+      padding: 3px 2px;
+      }
+      table {
+        font-size: 14px;
+        border-collapse: collapse;
+        width: 100%;
+        max-width: 1030px;
+      }
+      table thead td{
+        color: rgba(55, 53, 47, 0.6);
+      }
+      table td{
+        padding: 5px 8px;
+        border: 1px solid rgba(55, 53, 47, 0.09);
+      }
+      table tbody td:nth-child(1){
+        width: 120px;
+      }
+      table td:nth-child(2){
+        width: 100px;
+        text-align: right;
+      }
+      .add-row {
+        margin-top: 60px;
+      }
+      .add-row form > div {
+        margin-top: 12px;
+        display: flex;
+        aligng-items: flex-start;
+      }
+      .add-row label {
+        width: 100px;
+        display: inline-block;
+      }
+      .add-row [name=amount] {
+        width: 70px;
+      }
+      .add-row form button {
+        margin-top: 20px;
+        height: 24px;
+        border-radius: 3px;
+        background: rgb(46, 170, 220);
+        padding: 4px 8px;
+        font-size: 14px;
+        border: 1px solid transparent;
+        color: white;
+        cursor: pointer;
+      }
+      .add-row form input, .add-row form textarea {
+        border: 1px solid rgba(55, 53, 47, 0.2);
+      }
+      canvas#by_month{
+        width: 400px;
+        height: 400px;
+        max-width: 400px;
+        max-height: 400px;
+      }
+      canvas#by_day {
+        width: 570px;
+        height: 400px;
+        max-width: 570px;
+        max-height: 400px;
+      }
+      .chart-wrapper {
+        margin-top: 60px;
+        display: flex;
+      }
+      .chart-wrapper > div:first-child {
+        margin-right: 60px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>💳 Personal Finances</h1>
+    <table>
+      <thead>
+        <tr><td>Date</td><td>Amount</td><td>Destination</td></tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+
+    <div class="chart-wrapper">
+      <div class="by-month">
+        <h2>💰 Expenses by month</h2>
+        <canvas id="by_month" width="400" height="400"></canvas>
+      </div>
+
+      <div class="by-day">
+        <h2>💸 Expenses this month</h2>
+        <canvas id="by_day" width="400" height="400"></canvas>
+      </div>
+    </div>
+
+    <div class="add-row">
+      <h2>➕ New expenses</h2>
+      <form>
+        <div>
+          <label for="date">Date:</label>
+          <input type="date" name="date" id="date" required>
+          </div>
+
+          <div>
+            <label for="amount">Amount, ₴:</label>
+            <input type="number" min="0.1" step="any" name="amount" value="100.00" id="amount"/>
+          </div>
+
+          <div>
+            <label for="description">Destination:</label>
+            <textarea id="description" placeholder="Where you spent your money" cols="60" rows="4" required></textarea>
+          </div>
+
+          <button>Add</button>
+        </form>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js@3.1.1/dist/chart.min.js" type="text/javascript"></script>
+      <script src="pf.js" type="text/javascript"></script>
+  </body>
+</html>
