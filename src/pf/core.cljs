@@ -179,10 +179,7 @@
                 amount (-> "#amount" q .-value js/parseFloat)
                 description (-> "#description" q .-value)]
             (update-state [:expenses] #(conj %1 {:datetime date :description description :amount amount}))
-            (-> "#date" q .-value (set! ""))
-            (-> "#amount" q .-value (set! "100.00"))
-            (-> "#description" q .-value (set! ""))
-        ))))))
+            (.reset form)))))))
 
 
 (update-state 
